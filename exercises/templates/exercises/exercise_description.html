@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+    <div class="hero-unit">
+        <h2>Exercise description: </h2>
+        <b>You shall create a simple application Django 2.0+ / Python 3 which, upon login, exposes a simple interface where the user can execute one or more requests according to these characteristics:</b>
+
+        &nbsp;
+        <p></p>
+        <strong>Storage:</strong>
+        <ul>
+            <li>A list of x, y coordinates representing geospatial points (see CSV)</li>
+            <li>The DB must be populated through an ad hoc management command</li>
+        </ul>
+
+        <strong>Inputs:</strong>
+        <ul>
+            <li><i>x:float</i> X coordinate</li>
+            <li><i>y:float</i> Y coordinate</li>
+            <li><i>n:int</i> number of points to be returned</li>
+            <li><i>operation:type</i> nearest, furthest</li>
+        </ul>
+
+        <strong>Outputs:</strong>
+        <ul>
+            <li>The interface will return, asynchronously, the first N points closest to or farthest, depending on the selected operation, to the coordinates entered by the user.</li>
+        </ul>
+
+        <strong>Requirements:</strong>
+        <ul>
+            <li>Correct error management</li>
+            <li>Asynchronous requests and history of requests done</li>
+            <li>Possibility to select inputs from the history and automatically populate the input form</li>
+            <li>Test framework: mandatory for the API, optional for the GUI</li>
+        </ul>
+
+        <strong>Delivery:</strong>
+        <ul>
+            <li>The code must be shared through a Pull Request made on a GitHub repository specially created by you, from the "exercise" branch to the "master" branch.</li>
+        </ul>
+    </div>
+{% endblock %}

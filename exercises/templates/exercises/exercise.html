@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% load leaflet_tags %}
+
+{% block body_block %}
+    <div class="hero-unit">
+        <h2>Exercise: </h2>
+        <p>Return the first N points closest or furthest!</p>
+
+        <!-- Map -->
+        <div>
+            {% leaflet_map "main" callback="map_init" %}
+            <script type="text/javascript">
+                function map_init(map, options) {
+                    L.control.polylineMeasure({position:'topleft', unit:'metres', showBearings:true}).addTo(map);
+
+                    var points = '{% url "StorageGeoJson" %}';
+                    $.getJSON(points, function(data){
+                        console.log(data);
+                        L.geoJson(data, {
+                            onEachFeature: function (feature, layer) {
+                            console.log("******",  feature)
+                                if (feature.properties && feature.properties.point_id) {
+                                    layer.bindPopup(feature.properties.point_id);
+                                }
+                            }
+                        }).addTo(map);
+                    });
+
+                    // get point lat and lon from user form
+                    var lon = "{{ form.x.value }}";
+                    var lat = "{{ form.y.value }}";
+
+                    // style for maker user point
+                    var user_icon = new L.Icon({
+                      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+                      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                      iconSize: [25, 41],
+                      iconAnchor: [12, 41],
+                      popupAnchor: [1, -34],
+                      shadowSize: [41, 41]
+                    });
+
+                    // zoom to point & add it to map
+                    map.setView([lat, lon], 7);
+                    L.marker([lat, lon], {icon: user_icon}).addTo(map);
+                }
+            </script>
+        </div>
+
+        <p></p>
+
+        <!-- Input Fields -->
+        <div id="form_exercise" style="display: flex;">
+            <div id="left" style="flex: 0 25 50%">
+                <h3>Input Fields:</h3>
+                <form action="." method='POST'>{% csrf_token %}
+                    {{ form.as_table }}
+                    <p></p>
+                    <input type="submit" value="Compute"/>
+                </form>
+
+            </div>
+
+            <!-- Result: -->
+            <div id="right" style="flex: 1;">
+                <h3>Result:</h3>
+                <table>
+                    <tr>
+                        <th style="padding:0 5px;">Id</th>
+                        <th style="padding:0 5px;">Distance</th>
+                        <th style="padding:0 5px;">Units</th>
+                    </tr>
+                    {% for p in result %}
+                        <tr>
+                            <td style="padding:0 5px;"><i>{{ p.id }}</i></td>
+                            <td style="padding:0 5px;">{{ p.distance }}</td>
+                            <td style="padding:0 5px;">Km</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+       </div>
+    </div>
+{% endblock %}

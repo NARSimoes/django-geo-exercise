@@ -1,0 +1,30 @@
+
+version: "3"
+services:
+  database:
+    image: kartoza/postgis:9.6-2.4
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+      - ./docker/docker_database/geo_db.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432"
+    environment:
+      - POSTGRES_DB=geodjango
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    env_file:
+      - geo_exercise.env
+  django:
+    build: .
+    ports:
+      - "8990:8990"
+    depends_on:
+      - database
+    env_file:
+      - geo_exercise.env
+    volumes:
+    - .:/geo_exercise/
+    entrypoint: python /geo_exercise/manage.py runserver 0.0.0.0:8990
+
+volumes:
+  postgres_data:

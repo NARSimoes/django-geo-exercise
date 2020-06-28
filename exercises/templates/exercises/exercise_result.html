@@ -1,0 +1,43 @@
+
+            <!--
+            {% block result %}
+                OLA
+                {% include "exercises/exercise_result.html" %}
+            {% endblock %}
+            -->
+
+{% block result %}
+
+        <h3>Result</h3>
+        <!-- Result: -->
+        <div id="right" style="flex: 1;">
+            <h3>Result:</h3>
+            <table>
+                <tr>
+                    <th style="padding:0 5px;">Id</th>
+                    <th style="padding:0 5px;">Distance</th>
+                    <th style="padding:0 5px;">Units</th>
+                </tr>
+                {% for p in result %}
+                    <tr>
+                        <td style="padding:0 5px;"><i>{{ p.id }}</i></td>
+                        <td style="padding:0 5px;">{{ p.distance }}</td>
+                        <td style="padding:0 5px;">Km</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <!--
+        {% if storage %}
+            OLA
+            <ul>
+                {% for p in storage %}
+                    <li>
+                        {{ storage.id }}: {{storage.distance}}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}-->
+
+{% endblock %}
