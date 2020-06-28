@@ -69,7 +69,7 @@ Examples
 
     **5.2. Exercise with user coordinates and showing the results**
 
-    .. image:: docs/source/images/exercise_user.png
+        .. image:: docs/source/images/exercise_user.png
 
         **5.2.1. Simple tool to display in the map the distance between two points**
 
