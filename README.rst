@@ -45,35 +45,35 @@ Examples
 
 **1. First Page**
 
-    .. image:: docs/source/images/first_page.png
+.. image:: docs/source/images/first_page.png
 
 **2. Sign Up**
 
-    .. image:: docs/source/images/sign_up.png
+.. image:: docs/source/images/sign_up.png
 
 **3. Sign In**
 
-    .. image:: docs/source/images/login.png
+.. image:: docs/source/images/sign_in.png
 
 **4. Exercise Description**
 
-    .. image:: docs/source/images/exercise_description.png
+.. image:: docs/source/images/exercise_description_ok.png
 
 **5. Exercise**
 
     **5.1. Exercise Base Page**
 
-        This page holds the form and the map with the initial points.
+    This page holds the form and the map with the initial points.
 
-        .. image:: docs/source/images/exercise_base_page.png
+    .. image:: docs/source/images/exercise_base_page.png
 
     **5.2. Exercise with user coordinates and showing the results**
 
-        .. image:: docs/source/images/exercise_user.png
+    .. image:: docs/source/images/exercise_user.png
 
         **5.2.1. Simple tool to display in the map the distance between two points**
 
-            .. image:: docs/source/images/exercise_tool.png
+        .. image:: docs/source/images/exercise_tool.png
 
 
 Tests
@@ -89,7 +89,7 @@ Tests
 
 **Current Coverage:**
 
-    .. image:: docs/source/images/coverage.png
+.. image:: docs/source/images/coverage.png
 
 2. Run Tests (including tests using selenium/geckodriver/firefox) and check coverage
 
@@ -104,4 +104,4 @@ The documentation was created using Sphinx.
 Prepared for Google Authentication:
 ===================================
 
-    With the administration account add new site section and a social application (Fill those values with your OAuth details).
+With the administration account add new site section and a social application (Fill those values with your OAuth details).
